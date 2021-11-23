@@ -2231,7 +2231,6 @@ where
         tx: ResponseTx<(), Either<settings::Error, talpid_core::resolver::Error>>,
         enable_custom_resolver: bool,
     ) {
-        // TODO: add custom error type instead of retunring a bool
         let result = if self.settings.enable_custom_resolver != enable_custom_resolver {
             self.on_set_custom_resolver_inner(enable_custom_resolver)
                 .await
