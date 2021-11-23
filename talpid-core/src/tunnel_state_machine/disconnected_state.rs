@@ -12,7 +12,7 @@ use std::{
     net::{IpAddr, Ipv4Addr},
 };
 #[cfg(target_os = "macos")]
-use talpid_types::tunnel::ErrorStatecause;
+use talpid_types::tunnel::ErrorStateCause;
 use talpid_types::ErrorExt;
 
 /// No tunnel is running.
