@@ -493,6 +493,7 @@ impl TunnelState for ConnectingState {
         if shared_values.is_offline {
             return ErrorState::enter(shared_values, ErrorStateCause::IsOffline);
         }
+        #[cfg(target_os = "macos")]
         if let Err(err) = shared_values.disable_custom_resolver() {
             log::error!(
                 "{}",

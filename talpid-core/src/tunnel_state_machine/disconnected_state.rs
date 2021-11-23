@@ -197,6 +197,7 @@ impl TunnelState for DisconnectedState {
                 shared_values
                     .set_dns_servers(servers)
                     .expect("Failed to reconnect after changing custom DNS servers");
+                #[cfg(target_os = "macos")]
                 Self::set_dns(shared_values);
 
                 SameState(self.into())
@@ -208,6 +209,7 @@ impl TunnelState for DisconnectedState {
                     Self::register_split_tunnel_addresses(shared_values, true);
                     #[cfg(target_os = "macos")]
                     if block_when_disconnected {
+                        #[cfg(target_os = "macos")]
                         Self::set_dns(shared_values);
                     } else {
                         Self::reset_dns(shared_values);
